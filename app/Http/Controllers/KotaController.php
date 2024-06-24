@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Kota;
-
+use Barryvdh\DomPDF\Facade\Pdf;
 class KotaController extends Controller
 {
     public function index () {
@@ -65,5 +65,16 @@ class KotaController extends Controller
     }
 
 
+    public function downloadPdf()
+    {
+        $listKota = Kota::all(); // Ambil semua data kota dari model
+    
+        $data = [
+            'listKota' => $listKota,
+        ];
+    
+        $pdf = PDF::loadView('pdf.invoice', $data); // Load view 'pdf.invoice' dengan data yang telah Anda siapkan
+        return $pdf->download('invoice.pdf'); // Download PDF dengan nama 'invoice.pdf'
+    }
 
 }

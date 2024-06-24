@@ -10,7 +10,7 @@
 <div class="container mt-5">
   <div class="">
     <a href="{{route('add-kota')}}" class="btn btn-primary">Tambah</a>
-    <a class="btn btn-secondary">Print</a>
+    <a  href="{{ route('download-pdf') }}" class="btn btn-secondary">Print</a>
   </div>
 <table class="table">
   <thead>

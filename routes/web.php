@@ -9,4 +9,6 @@ Route::get('/edit-kota/{id}', [KotaController::class, 'showFormEdit'])->name('ed
 Route::post('/proccess-add', [KotaController::class, 'processAdd'])->name('process-add');
 Route::post('/process-edit/{id}', [KotaController::class, 'processEdit'])->name('process-edit');
 Route::delete('/process-delete/{id}', [KotaController::class, 'destroy'])->name('process-delete');
+Route::get('/download-pdf', [KotaController::class, 'downloadPdf'])->name('download-pdf');
+
 
