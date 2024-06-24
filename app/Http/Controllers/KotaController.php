@@ -33,12 +33,12 @@ class KotaController extends Controller
     }
 
     public function showFormEdit (int $id) {
-        $listKota = Kota::where('id_kota',$id)->get();
-        return view('kota.edit',compact('$listKota'));
+        $listKota = Kota::findOrFail($id); 
+        return view('kota.edit',compact('listKota'));
     }
 
     public function proccesEdit(Request $request,int $id){
-        $kota = Kota::where('id_kota',$id)->get();
+        $kota = Kota::findOrFail($id); 
 
 
         $kota->update([

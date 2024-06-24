@@ -38,6 +38,7 @@
         <th>{{$kota->jenis_kota}}</th>
         <th>{{$kota->keunggulan}}</th>
         <th>
+        <a href="{{ route('edit-kota', ['id' => $kota->id_kota]) }}" class="btn btn-success">Edit</a>
 
         </th>
     </tr>
