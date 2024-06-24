@@ -29,7 +29,7 @@ class KotaController extends Controller
         $kota->save();
 
         return redirect()->route('list-kota')
-        ->with('success', 'mesin Berhasil Di tambahkan');
+        ->with('success', 'kota Berhasil Di tambahkan');
     }
 
     public function showFormEdit ($id) {
@@ -50,7 +50,16 @@ class KotaController extends Controller
         $kota->save();
 
         return redirect()->route('list-kota')
-        ->with('success', 'mesin Berhasil Di tambahkan');
+        ->with('success', 'kota Berhasil Di tambahkan');
+    }
+
+    public function destroy(string $id)
+    {
+        $dataMesin = Kota::where('id_kota', '=', $id);
+
+        $dataMesin->delete();
+        return redirect()->route('list-kota')
+            ->with('success', 'kota Berhasil Di hapus');
     }
 
 
