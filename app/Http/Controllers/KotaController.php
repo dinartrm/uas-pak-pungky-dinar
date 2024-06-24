@@ -32,5 +32,27 @@ class KotaController extends Controller
         ->with('success', 'mesin Berhasil Di tambahkan');
     }
 
+    public function showFormEdit ($id) {
+        $listKota = Kota::where('id_kota',$id)->get();
+        return view('kota.edit',compact('$listKota'));
+    }
+
+    public function proccesEdit(Request $request){
+        $kota = Kota::update([
+            'nama_kota' => $request->nama_kota,
+            'nama_pemimpin' => $request->nama_pemimpin,
+            'tanggal_berdiri' => $request->tanggal_berdiri,
+            'jumlah_penduduk' => $request->jumlah_penduduk,
+            'luas_wilayah' => $request->luas_wilayah,
+            'status' => $request->status,
+            'keunggulan' => $request->keunggulan,
+        ]);
+        $kota->save();
+
+        return redirect()->route('list-kota')
+        ->with('success', 'mesin Berhasil Di tambahkan');
+    }
+
+
 
 }
