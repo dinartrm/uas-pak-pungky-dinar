@@ -9,7 +9,7 @@ class KotaController extends Controller
 {
     public function index () {
         $listKota = Kota::get();
-        return view('kota.index',compact('$listKota'));
+        return view('kota.index',compact('$listKota'))->with('i');
     }
 
     public function showFormAdd(){
@@ -32,13 +32,16 @@ class KotaController extends Controller
         ->with('success', 'kota Berhasil Di tambahkan');
     }
 
-    public function showFormEdit ($id) {
+    public function showFormEdit (int $id) {
         $listKota = Kota::where('id_kota',$id)->get();
         return view('kota.edit',compact('$listKota'));
     }
 
-    public function proccesEdit(Request $request){
-        $kota = Kota::update([
+    public function proccesEdit(Request $request,int $id){
+        $kota = Kota::where('id_kota',$id)->get();
+
+
+        $kota->update([
             'nama_kota' => $request->nama_kota,
             'nama_pemimpin' => $request->nama_pemimpin,
             'tanggal_berdiri' => $request->tanggal_berdiri,
@@ -47,17 +50,16 @@ class KotaController extends Controller
             'status' => $request->status,
             'keunggulan' => $request->keunggulan,
         ]);
-        $kota->save();
 
         return redirect()->route('list-kota')
         ->with('success', 'kota Berhasil Di tambahkan');
     }
 
-    public function destroy(string $id)
+    public function destroy(int $id)
     {
-        $dataMesin = Kota::where('id_kota', '=', $id);
+        $dataKota = Kota::where('id_kota', '=', $id);
 
-        $dataMesin->delete();
+        $dataKOta->delete();
         return redirect()->route('list-kota')
             ->with('success', 'kota Berhasil Di hapus');
     }
