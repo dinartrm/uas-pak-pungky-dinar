@@ -2,6 +2,8 @@
 nama : Dinar Tri Murti
 nim : 12110008
 
+struktur db
+![alt text](image.png)
 
 cara running
 composer install
