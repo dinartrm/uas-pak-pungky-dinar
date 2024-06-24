@@ -16,6 +16,7 @@ class Kota extends Model
         'nama_pemimpin',
         'tanggal_berdiri',
         'jumlah_penduduk',
+        'luas_wilayah',
         'jenis_kota',
         'keunggulan'
     ];
