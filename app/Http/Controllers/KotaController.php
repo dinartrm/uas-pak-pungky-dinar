@@ -57,9 +57,9 @@ class KotaController extends Controller
 
     public function destroy(int $id)
     {
-        $dataKota = Kota::where('id_kota', '=', $id);
+        $dataKota = Kota::findOrFail($id);
 
-        $dataKOta->delete();
+        $dataKota->delete();
         return redirect()->route('list-kota')
             ->with('success', 'kota Berhasil Di hapus');
     }

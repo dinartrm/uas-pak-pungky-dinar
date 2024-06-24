@@ -37,9 +37,13 @@
         <th>{{$kota->luas_wilayah}}</th>
         <th>{{$kota->jenis_kota}}</th>
         <th>{{$kota->keunggulan}}</th>
-        <th>
+        <th class="d-flex gap-2">
         <a href="{{ route('edit-kota', ['id' => $kota->id_kota]) }}" class="btn btn-success">Edit</a>
-
+        <form action="{{ route('process-delete', ['id' => $kota->id_kota]) }}" method="POST">
+                @csrf
+                @method('DELETE')
+                <button type="submit" class="btn btn-danger">Delete</button>
+            </form>
         </th>
     </tr>
     @endforeach
